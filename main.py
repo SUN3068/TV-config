@@ -1,29 +1,25 @@
-from flask import Flask, request, jsonify
-import requests
-from PIL import Image
+from fastapi import FastAPI, UploadFile, File
+from fastapi.responses import JSONResponse
 import pytesseract
-from io import BytesIO
+from PIL import Image
+import io
 
-app = Flask(__name__)
+app = FastAPI()
 
-@app.route('/ocr', methods=['POST'])
-def ocr():
-    data = request.json
-    url = data.get("url")
-    if not url:
-        return jsonify({"error": "No image URL provided"}), 400
-
+@app.post("/ocr")
+async def ocr_image(file: UploadFile = File(...)):
     try:
-        response = requests.get(url, timeout=10)
-        img = Image.open(BytesIO(response.content)).convert("L")
-        code = pytesseract.image_to_string(img, config="--psm 7 digits").strip()
-        return jsonify({"code": code})
+        # 读取上传的图像内容并转为 PIL Image
+        contents = await file.read()
+        image = Image.open(io.BytesIO(contents))
+
+        # 使用 Tesseract 识别图像中的文字
+        text = pytesseract.image_to_string(image)
+
+        return {"code": 200, "text": text.strip()}
     except Exception as e:
-        return jsonify({"error": str(e)}), 500
+        return JSONResponse(status_code=500, content={"code": 500, "error": str(e)})
 
-@app.route('/')
-def index():
-    return "OCR API is running."
-
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=10000)
+@app.get("/")
+async def root():
+    return {"msg": "OCR API Running"}
