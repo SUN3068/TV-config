@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: ffzy-ocr-api
+    name: tv-config
     env: python
     plan: free
     buildCommand: pip install -r requirements.txt
