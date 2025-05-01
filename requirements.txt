@@ -4,3 +4,4 @@ requests
 pytesseract
 pillow
 beautifulsoup4
+python-multipart
