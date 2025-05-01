@@ -20,6 +20,14 @@ async def ocr_image(file: UploadFile = File(...)):
     except Exception as e:
         return JSONResponse(status_code=500, content={"code": 500, "error": str(e)})
 
-@app.get("/")
-async def root():
-    return {"msg": "OCR API Running"}
+
+@app.get("/search")
+def search(key: str):
+    """
+    这是 TV 的搜索请求中转接口：
+    - 自动识别验证码（下载验证码图 -> 识别 -> 提交验证码）
+    - 然后再执行原本的搜索请求
+    - 最终返回结果（xml 或 json 格式）
+    """
+
+    return {"list": []}  # TODO：填真实逻辑

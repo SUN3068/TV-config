@@ -4,19 +4,10 @@
   "logo": "https://img.fongmi.eu.org/fongmi.jpg",
   "sites": [
     {
-        "key": "豆瓣",
-        "name": "豆瓣",
-        "type": 3,
-        "api": "csp_Douban",
-        "searchable": 1,
-        "changeable": 1,
-        "ext": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/FongMi/CatVodSpider/main/json/douban.json"
-    },
-    {
       "key": "量子",
       "name": "量子",
       "type": 0,
-      "api": "https://cj.lzcaiji.com/api.php/provide/vod/at/xml/",
+      "api": "https://cj.lziapi.com/api.php/provide/vod/at/xml/",
       "searchable": 1,
       "changeable": 1,
       "categories": [
@@ -95,185 +86,44 @@
         "海外动漫"
       ]
     },
-      {
-      "key": "黑木耳",
-      "name": "黑木耳",
-      "type": 1,
-      "api": "https://www.heimuer.tv/api.php/provide/vod",
-      "playUrl": "https://player.heimuer.tv/index.html?url=",
+        {
+      "key": "非凡搜索",
+      "name": "非凡搜索",
+      "type": 0,
+      "api": "https://tv-config.onrender.com/search",
       "searchable": 1,
       "changeable": 1,
-      "categories": ["剧情", "动作", "冒险", "同性", "喜剧", "奇幻", "恐怖", "悬疑", "惊悚", "灾难", "爱情", "犯罪", "科幻", "动画电影", "歌舞", "战争", "经典", "网络电影", "国产剧", "港剧", "韩剧", "日剧", "泰剧", "台剧", "欧美剧", "新马剧", "其他剧", "国产综艺", "港台综艺", "韩国综艺", "日本综艺", "欧美综艺", "新马泰综艺", "其他综艺", "欧美", "日本", "韩国", "国产", "港台", "古装", "虐恋", "逆袭", "悬疑", "神豪", "重生", "复仇", "穿越", "甜宠", "强者"]
-			    },
-        {
-        "key": "荐片",
-        "name": "荐片",
-        "type": 3,
-        "api": "csp_Jianpian",
-        "searchable": 1,
-        "changeable": 1,
-        "playerType": 1,
-        "ext": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/FongMi/CatVodSpider/main/json/jianpian.json"
-    },
-    {
-        "key": "6v新版",
-        "name": "新版",
-        "type": 3,
-        "api": "csp_Xb6v",
-        "searchable": 1,
-        "changeable": 0,
-        "timeout": 60
-    },
-    {
-      "key": "看球",
-      "name": "看球",
-      "type": 3,
-      "api": "csp_Kanqiu",
-      "searchable": 1,
-      "changeable": 0,
-      "style": {
-        "type": "list"
-      }
-    },
-    {
-      "key": "JustLive",
-      "name": "JustLive",
-      "type": 3,
-      "api": "csp_JustLive",
-      "searchable": 1,
-      "changeable": 0
-    },
-    {
-        "key": "csp_Kugou",
-        "name": "酷狗",
-        "type": 3,
-        "api": "csp_Kugou",
-        "searchable": 1,
-        "changeable": 1,
-        "style": {
-            "type": "rect",
-            "ratio": 1.597
-        }
-    },
-    {
-      "key": "嗶哩",
-      "name": "嗶哩",
-      "type": 3,
-      "api": "csp_Bili",
-      "searchable": 1,
-      "changeable": 0,
-      "ext": {
-        "type": "4K#8K#DJ歌曲超清#模特#泳裝秀#內衣秀#小姐姐超清#帕梅拉#太極拳#廣場舞#演唱會#相聲小品超清#動物世界#白噪音超清",
-        "cookie": ""
-      }
-    },
-    {
-      "key": "櫻花",
-      "name": "櫻花",
-      "type": 3,
-      "api": "csp_Ying",
-      "searchable": 1,
-      "changeable": 1
-    },
-    {
-      "key": "巴士",
-      "name": "巴士",
-      "type": 3,
-      "api": "csp_Dm84",
-      "searchable": 1,
-      "changeable": 1
-    },
-    {
-      "key": "異界",
-      "name": "異界",
-      "type": 3,
-      "api": "csp_Ysj",
-      "searchable": 1,
-      "changeable": 1
-    },
-    {
-      "key": "AList",
-      "name": "AList",
-      "type": 3,
-      "api": "csp_AList",
-      "searchable": 1,
-      "changeable": 0,
-      "ext": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/FongMi/CatVodSpider/main/json/alist.json"
-    },
-    {
-      "key": "WebDAV",
-      "name": "WebDAV",
-      "type": 3,
-      "api": "csp_WebDAV",
-      "searchable": 1,
-      "changeable": 0,
-      "ext": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/FongMi/CatVodSpider/main/json/webdav.json"
-    },
-    {
-      "key": "玩偶",
-      "name": "玩偶",
-      "type": 3,
-      "api": "csp_Wogg",
-      "searchable": 1,
-      "changeable": 0
-    },
-    {
-      "key": "七夜",
-      "name": "七夜",
-      "type": 3,
-      "api": "csp_Dovx",
-      "searchable": 1,
-      "changeable": 0
-    },
-    {
-      "key": "雲搜",
-      "name": "雲搜",
-      "type": 3,
-      "api": "csp_UpYun",
-      "searchable": 1,
-      "changeable": 0
-    },
-    {
-      "key": "盤搜",
-      "name": "盤搜",
-      "type": 3,
-      "api": "csp_PanSou",
-      "searchable": 1,
-      "changeable": 0
-    },
-    {
-      "key": "盤搜索",
-      "name": "盤搜索",
-      "type": 3,
-      "api": "csp_PanSearch",
-      "searchable": 1,
-      "changeable": 0
-    },
-    {
-      "key": "找資源",
-      "name": "找資源",
-      "type": 3,
-      "api": "csp_Zhaozy",
-      "searchable": 1,
-      "changeable": 0,
-      "ext": "影視天下第一$$$test2$$$test2"
-    },
-    {
-      "key": "本地",
-      "name": "本地",
-      "type": 3,
-      "api": "csp_Local",
-      "searchable": 0,
-      "changeable": 0
-    },
-    {
-      "key": "push_agent",
-      "name": "推送",
-      "type": 3,
-      "api": "csp_Push",
-      "searchable": 0,
-      "changeable": 0,
-      "timeout": 60
+      "categories": [
+        "国产动漫",
+        "日韩动漫",
+        "国产剧",
+        "韩国剧",
+        "日本剧",
+        "电影片",
+        "连续剧",
+        "综艺片",
+        "动漫片",
+        "动作片",
+        "喜剧片",
+        "爱情片",
+        "科幻片",
+        "恐怖片",
+        "剧情片",
+        "战争片",
+        "香港剧",
+        "欧美剧",
+        "记录片",
+        "台湾剧",
+        "海外剧",
+        "泰国剧",
+        "大陆综艺",
+        "港台综艺",
+        "日韩综艺",
+        "欧美综艺",
+        "欧美动漫",
+        "港台动漫",
+        "海外动漫"
+      ]
     }
   ],
   "doh": [
