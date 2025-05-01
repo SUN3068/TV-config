@@ -1,7 +1,7 @@
 fastapi
 uvicorn
-requests
-pytesseract
+httpx
 pillow
+pytesseract
 beautifulsoup4
 python-multipart
