@@ -44,6 +44,11 @@ async def search(wd: str):
             img_response = await client.get(img_url, headers=headers)
             image = Image.open(io.BytesIO(img_response.content)).convert("L")
             captcha_code = pytesseract.image_to_string(image).strip()
+
+            print("[验证码抓取] 成功抓取验证码图片")
+            image.save("captcha_debug.png")  # 保存图片供人工查看
+            print(f"[验证码识别] Tesseract 返回内容: {captcha_code}")
+
             captcha_code = re.sub(r"\W", "", captcha_code)[:6]  # 简单清洗
 
             # 获取 CAPTCHA ID
