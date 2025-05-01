@@ -1,30 +1,35 @@
 from fastapi import FastAPI
 import httpx
-from io import BytesIO
-from PIL import Image
+from bs4 import BeautifulSoup
+from pathlib import Path
 
 app = FastAPI()
 
+@app.get("/fetch_captcha")
+async def fetch_captcha():
+    base_url = "http://cj.ffzyapi.com"
+    search_url = f"{base_url}/api.php/provide/vod/at/xml/?wd=流浪地球"
 
-@app.get("/search")
-async def search(wd: str):
-    url = f"http://cj.ffzyapi.com/api.php/provide/vod/at/xml/?wd={wd}"
-    cookies = {}  # 假设cookies.txt已经加载，避免重复写入
+    async with httpx.AsyncClient(follow_redirects=True) as client:
+        # 第一次请求，触发跳转到验证码页
+        resp = await client.get(search_url)
 
-    # 使用 httpx 发送请求获取搜索结果
-    async with httpx.AsyncClient() as client:
-        response = await client.get(url, cookies=cookies)
-        if "captcha" in response.text:  # 检查是否包含验证码
-            # 找到验证码的URL
-            captcha_url = response.text.split('href="')[1].split('"')[0]
-            captcha_url = f"http://cj.ffzyapi.com{captcha_url}"
+        # 使用 BeautifulSoup 提取验证码图片链接
+        soup = BeautifulSoup(resp.text, 'html.parser')
+        img_tag = soup.find("img", id="ui-captcha-image")
+        if not img_tag:
+            return {"status": "fail", "message": "未找到验证码图像"}
 
-            # 获取验证码图片
-            captcha_img_response = await client.get(captcha_url)
-            img = Image.open(BytesIO(captcha_img_response.content))
+        img_src = img_tag["src"]
+        captcha_url = base_url + img_src
 
-            # 保存验证码图片（用作调试）
-            img.save("captcha_image.png")
-            return {"status": "captcha", "message": "验证码已保存", "captcha_url": captcha_url}
+        # 下载验证码图片
+        img_resp = await client.get(captcha_url)
+        captcha_path = Path("captcha.jpg")
+        captcha_path.write_bytes(img_resp.content)
 
-    return {"status": "ok", "message": "没有检测到验证码"}
+        return {
+            "status": "ok",
+            "captcha_saved": True,
+            "captcha_url": captcha_url
+        }
